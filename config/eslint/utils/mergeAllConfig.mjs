@@ -1,7 +1,7 @@
 import { merge } from './merge.mjs';
 
 /**
- * @param  {import('eslint').Linter.FlatConfig[][]} configs
+ * @param  {import('eslint').Linter.Config[][]} configs
  */
 export function mergeAll(...configs) {
   return configs

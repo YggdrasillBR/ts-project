@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import esX from 'eslint-plugin-es-x';
-// @ts-ignore
+// @ts-expect-error
 import cspellConfigs from '@cspell/eslint-plugin/configs';
 import stylistic from '@stylistic/eslint-plugin';
 import { merge } from './utils/merge.mjs';

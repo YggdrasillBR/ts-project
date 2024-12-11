@@ -10,7 +10,10 @@
   "description": "",
   "dependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@types/archiver": "^6.0.3",
     "@types/eslint__eslintrc": "^2.1.2",
+    "archiver": "^7.0.1",
+    "chrome-webstore-upload": "^3.1.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-formatter-checkstyle": "^8.40.0",
     "eslint-formatter-compact": "^8.40.0",
@@ -25,6 +28,7 @@
     "lru-cache": "^11.0.2",
     "path": "^0.12.7",
     "prettier": "^3.4.2",
+    "ts-deepmerge": "^7.0.2",
     "typescript": "^5.7.2",
     "url": "^0.11.4",
     "vue": "^3.5.13",
