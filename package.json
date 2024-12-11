@@ -9,8 +9,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@types/eslint__eslintrc": "^2.1.2",
     "eslint": "^9.16.0",
+    "path": "^0.12.7",
     "typescript": "^5.7.2",
+    "url": "^0.11.4",
     "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1"
   }
 }
