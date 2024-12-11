@@ -10,12 +10,29 @@
   "description": "",
   "dependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.16.0",
     "@types/eslint__eslintrc": "^2.1.2",
     "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-formatter-checkstyle": "^8.40.0",
+    "eslint-formatter-compact": "^8.40.0",
+    "eslint-formatter-jslint-xml": "^8.40.0",
+    "eslint-formatter-junit": "^8.40.0",
+    "eslint-formatter-tap": "^8.40.0",
+    "eslint-formatter-unix": "^8.40.0",
+    "eslint-formatter-visualstudio": "^8.40.0",
+    "eslint-plugin-no-unsanitized": "^4.1.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.32.0",
+    "eslint-plugin-vue-scoped-css": "^2.9.0",
+    "lru-cache": "^11.0.2",
     "path": "^0.12.7",
+    "prettier": "^3.4.2",
     "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
     "url": "^0.11.4",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-eslint-parser": "^9.4.3"
   },
   "devDependencies": {
     "@types/node": "^22.10.1"
