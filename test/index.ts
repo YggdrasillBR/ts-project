@@ -5,7 +5,7 @@ import { xhrAction } from '../src/background/messageHandler';
 
 const pages = { ...part1, ...part2 };
 
-// @ts-ignore
+// @ts-expect-error
 window.chrome.runtime.sendMessage = (message: any, callback: (response: any) => void) => {
   if (message.name === 'xhr') {
     return xhrAction(message, 'test', callback, 'testing');

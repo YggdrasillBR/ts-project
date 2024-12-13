@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const puppeteer = require('puppeteer');
-const { PuppeteerBlocker } = require('@cliqz/adblocker-puppeteer');
-const path = require('path');
+import { expect } from 'chai';
+import puppeteer from 'puppeteer';
+import { PuppeteerBlocker } from '@ghostery/adblocker-puppeteer';
+import path from 'path';
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const script = readFileSync(`${__dirname}/../dist/testCode.js`, 'utf8');
