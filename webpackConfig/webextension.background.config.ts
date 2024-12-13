@@ -1,8 +1,9 @@
 import { NormalModuleReplacementPlugin, ProvidePlugin, DefinePlugin } from 'webpack';
 import { resolve as _resolve, join } from 'path';
 const appTarget = process.env.APP_TARGET || 'general';
-import SentryWebpackPlugin from '@sentry/webpack-plugin';
-import { version } from '../package.json';
+import packageJson from '../package.json';
+
+import { getKeys } from './utils/keys';
 
 plugins = [
   new NormalModuleReplacementPlugin(/(.*)-general/, function(resource) {
@@ -12,34 +13,16 @@ plugins = [
     con: _resolve(__dirname, './../src/utils/consoleBG'),
     utils: _resolve(__dirname, './../src/utils/general'),
     api: _resolve(__dirname, './../src/api/webextension'),
-    j: _resolve(__dirname, './../src/utils/j'),
   }),
   new DefinePlugin({
-    env: JSON.stringify({
-      CONTEXT: process.env.MODE === 'travis' ? 'production' : 'development',
-    }),
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
+    __MAL_SYNC_KEYS__: JSON.stringify(getKeys()),
   }),
 ]
 
-if (process.env.SENTRY_AUTH_TOKEN) {
-  plugins.push(
-    new SentryWebpackPlugin({
-      url: process.env.SENTRY_AUTH_URL,
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      org: 'shark',
-      project: 'malsync',
-      release: `malsync@${version}`,
-      include: 'dist/webextension',
-      ignore: ['node_modules', 'webpack.config.js'],
-      setCommits: {
-        auto: true,
-      },
-    }),
-  );
-}
-
 export const entry = {
-  index: join(__dirname, '..', 'src/background.ts'),
+  index: join(__dirname, '..', 'src/index-webextension/serviceworker.ts'),
 };
 export const module = {
   rules: [

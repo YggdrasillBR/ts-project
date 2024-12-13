@@ -1,6 +1,8 @@
 import { join, resolve as _resolve } from 'path';
+import { existsSync } from 'fs';
 import { ProvidePlugin, DefinePlugin, optimize } from 'webpack';
 import wrapper from './utils/WrapperPlugin';
+import { getVirtualScript } from './utils/general';
 import package from '../package.json';
 import generalUrls from './utils/pageUrls';
 const pages = require('./utils/pages').pagesUrls();
@@ -11,10 +13,11 @@ import { VueLoaderPlugin } from 'vue-loader';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import i18n from './utils/i18n';
-import { generateMatchExcludes as _generateMatchExcludes } from './utils/pages';
+import { generateMatchExcludes as _generateMatchExcludes, pages as _pages } from './utils/pages';
 const generateMatchExcludes = _generateMatchExcludes;
 
 const pageUrls = { ...generalUrls, ...pages };
+import { getKeys } from './utils/keys';
 
 const generateResources = () => {
   const resources = [];
@@ -81,6 +84,18 @@ const generateMetadataBlock = metadata => {
   return `// ==UserScript==\n${block}// ==/UserScript==\n\n` + `var i18n = ${JSON.stringify(i18n())};\n`;
 };
 
+const proxyScripts = [];
+_pages().forEach(page => {
+  pageRoot = join(__dirname, '..', 'src/pages/', page);
+  const scriptPath = `dist/webextension/content/proxy/proxy_${page}.js`;
+  if (existsSync(join(pageRoot, 'proxy.ts'))) {
+    if (!existsSync(join(__dirname, '..', scriptPath)))
+      throw new Error(`Proxy script for ${page} does not exist. Please build the extension first.`);
+    proxyScripts.push(`export const ${page} = require('./${scriptPath}?raw');`);
+  }
+});
+console.log('Proxy', proxyScripts);
+
 export const entry = {
   index: join(__dirname, '..', 'src/index.ts'),
 };
@@ -108,6 +123,10 @@ export const module = {
         shadowMode: true,
         exposeFilename: true,
       },
+    },
+    {
+      resourceQuery: /raw/,
+      type: 'asset/source',
     },
   ],
 };
@@ -139,11 +158,12 @@ export const plugins = [
     utils: _resolve(__dirname, './../src/utils/general'),
     j: _resolve(__dirname, './../src/utils/j'),
     api: _resolve(__dirname, './../src/api/userscript'),
+    proxyScripts: getVirtualScript('proxyScripts', proxyScripts.join('\n')),
   }),
   new DefinePlugin({
-    env: JSON.stringify({
-      CONTEXT: process.env.MODE === 'travis' ? 'production' : 'development',
-    }),
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
+    __MAL_SYNC_KEYS__: JSON.stringify(getKeys()),
   }),
   new optimize.LimitChunkCountPlugin({
     maxChunks: 1,
