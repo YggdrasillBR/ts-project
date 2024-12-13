@@ -6,11 +6,11 @@ import esX from 'eslint-plugin-es-x';
 // @ts-expect-error
 import cspellConfigs from '@cspell/eslint-plugin/configs';
 import stylistic from '@stylistic/eslint-plugin';
-import { merge } from './utils/merge.mjs';
-import { mergeAll } from './utils/mergeAllConfig.mjs';
-import esXRules from './rules/esX.mjs';
-import cspell from './rules/cspell.mjs';
-import stylisticRules from './rules/stylistic.mjs';
+import { merge } from './utils/merge';
+import { mergeAll } from './utils/mergeAllConfig';
+import esXRules from './rules/esX';
+import cspell from './rules/cspell';
+import stylisticRules from './rules/stylistic';
 
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),

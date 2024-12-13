@@ -5,13 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { FlatCompat } from '@eslint/eslintrc';
 import globals from 'globals';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import { postConfig, preConfig } from '../base.mjs';
-import core from '../rules/core.mjs';
-import { merge } from '../utils/merge.mjs';
-import { mergeAll } from '../utils/mergeAllConfig.mjs';
-import jQueryUnsafeMalSync from '../plugins/jquery-unsafe-malsync/index.mjs';
-import noUnsanitizedRules from '../rules/no-unsanitized.mjs';
-import importRules from '../rules/importRules.mjs';
+import { postConfig, preConfig } from '../base.js';
+import core from '../rules/core.js';
+import { merge } from '../utils/merge.js';
+import { mergeAll } from '../utils/mergeAllConfig.js';
+import jQueryUnsafeMalSync from '../plugins/jquery-unsafe-malsync/index.js';
+import noUnsanitizedRules from '../rules/no-unsanitized.js';
+import importRules from '../rules/importRules.js';
 
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),

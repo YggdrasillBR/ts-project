@@ -4,12 +4,12 @@ import { FlatCompat } from '@eslint/eslintrc';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import { postConfig, preConfig } from '../base.mjs';
-import core from '../rules/core.mjs';
-import importRules from '../rules/importRules.mjs';
-import prettier from '../rules/prettier.mjs';
-import { merge } from '../utils/merge.mjs';
-import { mergeAll } from '../utils/mergeAllConfig.mjs';
+import { postConfig, preConfig } from '../base.js';
+import core from '../rules/core.js';
+import importRules from '../rules/importRules.js';
+import prettier from '../rules/prettier.js';
+import { merge } from '../utils/merge.js';
+import { mergeAll } from '../utils/mergeAllConfig.js';
 
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),

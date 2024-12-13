@@ -4,15 +4,15 @@ import ts from 'typescript-eslint';
 import js from '@eslint/js';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueScopedCSS from 'eslint-plugin-vue-scoped-css';
-import { postConfig, preConfig } from '../base.mjs';
-import core from '../rules/core.mjs';
-import importRules from '../rules/importRules.mjs';
-import typescript from '../rules/typescript.mjs';
-import vue from '../rules/vue.mjs';
-import { compat } from '../utils/compat.mjs';
-import { merge } from '../utils/merge.mjs';
-import { mergeAll } from '../utils/mergeAllConfig.mjs';
-import jQueryUnsafeMalSync from '../plugins/jquery-unsafe-malsync/index.mjs';
+import { postConfig, preConfig } from '../base.js';
+import core from '../rules/core.js';
+import importRules from '../rules/importRules.js';
+import typescript from '../rules/typescript.js';
+import vue from '../rules/vue.js';
+import { compat } from '../utils/compat.js';
+import { merge } from '../utils/merge.js';
+import { mergeAll } from '../utils/mergeAllConfig.js';
+import jQueryUnsafeMalSync from '../plugins/jquery-unsafe-malsync/index.js';
 
 const airbnb = merge(compat.extends('airbnb-base', 'airbnb-typescript/base'));
 
