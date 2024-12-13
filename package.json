@@ -15,6 +15,7 @@
     "@types/chai": "^5.0.1",
     "@types/cheerio": "^0.22.35",
     "@types/eslint__eslintrc": "^2.1.2",
+    "@types/glob": "^8.1.0",
     "@types/mkdirp": "^1.0.2",
     "@types/node-fetch": "^2.6.12",
     "@types/webpack": "^5.28.5",
