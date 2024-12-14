@@ -10,6 +10,10 @@
   "description": "",
   "dependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@floating-ui/core": "^1.6.8",
+    "@floating-ui/dom": "^1.6.12",
+    "@floating-ui/utils": "^0.2.8",
+    "@floating-ui/vue": "^1.1.5",
     "@ghostery/adblocker-puppeteer": "^2.3.1",
     "@stylistic/eslint-plugin": "^2.12.1",
     "@types/archiver": "^6.0.3",

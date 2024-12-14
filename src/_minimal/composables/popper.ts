@@ -1,10 +1,10 @@
 import { nextTick, onBeforeUnmount, reactive, toRefs, watch } from 'vue';
 
-import { createPopper } from '@popperjs/core';
-import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow';
-import flip from '@popperjs/core/lib/modifiers/flip';
-import offset from '@popperjs/core/lib/modifiers/offset';
-import maxSize from 'popper-max-size-modifier';
+import { createPopper } from '@floating-ui/core';
+import preventOverflow from '@floating-ui/dom';
+import flip from '@floating-ui/core';
+import offset from '@floating-ui/core';
+import maxSize from '@floating-ui/dom';
 
 export function usePopper({ emit, popperNode, triggerNode, placement }) {
   const state: {
