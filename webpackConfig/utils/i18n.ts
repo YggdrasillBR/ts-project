@@ -1,4 +1,4 @@
-import i18n from '../../assets/_locales/en/message.json';
+import i18n from '../../assets/_locales/en/messages.json';
 
 export default function() {
   const tempi18n = {};
